@@ -1,55 +1,39 @@
 import { useState } from "react";
 import Modal from "./components/Modal";
 import LoadButton from "./components/LoadButton";
+import Button from "./components/Button";
 function App() {
-  const [modals, setModals] = useState([
-    { color: "bg-green-400", cursor: "pointer", id: 1 },
-    { color: "bg-red-400", cursor: "not-allowed", id: 2 },
-  ]);
   const [loading, setLoading] = useState(true);
 
-  const invertModals = () => {
-    setTimeout(() => {
-      const invertedModals = modals.map((modal) => {
-        const color =
-          modal.color === "bg-green-400" ? "bg-red-400" : "bg-green-400";
-        const cursor = modal.cursor === "pointer" ? "not-allowed" : "pointer";
-        return { ...modal, color: color, cursor: cursor };
-      });
-      setLoading((prev) => {
-        prev = !prev;
-      });
-      setModals(invertedModals);
-    }, 2000);
-  };
+  const [color1, setColor1] = useState("bg-green-400");
+  const [color2, setColor2] = useState("bg-red-400");
 
-  const invertIndividualModal = (id) => {
-    console.log(id);
-    const individual = modals.map((modal) => {
-      return modal.id === id
-        ? {
-            ...modal,
-            color: `${
-              modal.color === "bg-green-400" ? "bg-red-400" : "bg-green-400"
-            }`,
-            cursor: `${modal.cursor === "pointer" ? "not-allowed" : "pointer"}`,
-          }
-        : modal;
-    });
-    setModals(individual);
+  const [buttonColor1, setButtonColor1] = useState("bg-red-400");
+  const [buttonColor2, setButtonColor2] = useState("bg-green-400");
+
+  const invertModals = () => {
+    setColor1("bg-red-400");
+    setColor2("bg-green-400");
+    setButtonColor1("bg-green-400");
+    setButtonColor2("bg-red-400");
+    setTimeout(() => {
+      setColor1("bg-green-400");
+      setColor2("bg-red-400");
+      setButtonColor1("bg-red-400");
+      setButtonColor2("bg-green-400");
+    }, 2000);
   };
 
   return (
     <>
-      {modals.map((modal) => (
-        <Modal
-          color={modal.color}
-          key={modal.id}
-          id={modal.id}
-          cursor={modal.cursor}
-          invertIndividualModal={invertIndividualModal}
-        />
-      ))}
+      <div className="relative">
+        <Modal color={color1} />
+        <Button color={buttonColor1} />
+      </div>
+      <div className="relative">
+        <Modal color={color2} />
+        <Button color={buttonColor2} />
+      </div>
       <LoadButton invertModals={invertModals} />
     </>
   );
