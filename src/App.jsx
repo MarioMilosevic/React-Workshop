@@ -1,26 +1,34 @@
 import { useState } from "react";
 import Modal from "./components/Modal";
 function App() {
-  const [button,setButton] = useState()
-  const [modalColor,setModalColor] = useState()
+  const [modals, setModals] = useState([
+    { color: "bg-green-400", cursor: "pointer", id: 1 },
+    { color: "bg-red-400", cursor: "not-allowed", id: 2 },
+  ]);
 
-  const buttonHandler = () => {
-    console.log("proba")
-  }
-
-  const greenColor = () => {
-    return "bg-green-400"
-  }
-
-  const redColor = () => {
-    return "bg-red-400"
-  }
+  const invertModal = () => {
+    const invertedModals = modals.map((modal) => {
+      const color =
+        modal.color === "bg-green-400" ? "bg-red-400" : "bg-green-400";
+      const cursor = modal.cursor === "pointer" ? "not-allowed" : "pointer";
+      return { ...modal, color: color, cursor: cursor };
+    });
+    setModals(invertedModals);
+  };
 
   return (
-   <>
-    <Modal color={greenColor}/>
-    <Modal color={redColor}/>
-   </>
+    <>
+      {modals.map((modal) => {
+        return (
+          <Modal
+            color={modal.color}
+            key={modal.id}
+            cursor={modal.cursor}
+            invertModal={invertModal}
+          />
+        );
+      })}
+    </>
   );
 }
 
