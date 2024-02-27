@@ -1,14 +1,26 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-import "./App.css";
-
+import { useState } from "react";
+import Modal from "./components/Modal";
 function App() {
-  // const [count, setCount] = useState(0)
+  const [button,setButton] = useState()
+  const [modalColor,setModalColor] = useState()
+
+  const buttonHandler = () => {
+    console.log("proba")
+  }
+
+  const greenColor = () => {
+    return "bg-green-400"
+  }
+
+  const redColor = () => {
+    return "bg-red-400"
+  }
 
   return (
-    <div>
-    </div>
+   <>
+    <Modal color={greenColor}/>
+    <Modal color={redColor}/>
+   </>
   );
 }
 
