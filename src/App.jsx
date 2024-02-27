@@ -8,22 +8,36 @@ function App() {
   ]);
   const [loading, setLoading] = useState(true);
 
-  const invertModal = () => {
+  const invertModals = () => {
     setTimeout(() => {
-      
       const invertedModals = modals.map((modal) => {
         const color =
-        modal.color === "bg-green-400" ? "bg-red-400" : "bg-green-400";
+          modal.color === "bg-green-400" ? "bg-red-400" : "bg-green-400";
         const cursor = modal.cursor === "pointer" ? "not-allowed" : "pointer";
         return { ...modal, color: color, cursor: cursor };
       });
       setLoading((prev) => {
-        prev = !prev
-        console.log(prev)
-      })
+        prev = !prev;
+      });
       setModals(invertedModals);
     }, 2000);
-    };
+  };
+
+  const invertIndividualModal = (id) => {
+    console.log(id);
+    const individual = modals.map((modal) => {
+      return modal.id === id
+        ? {
+            ...modal,
+            color: `${
+              modal.color === "bg-green-400" ? "bg-red-400" : "bg-green-400"
+            }`,
+            cursor: `${modal.cursor === "pointer" ? "not-allowed" : "pointer"}`,
+          }
+        : modal;
+    });
+    setModals(individual);
+  };
 
   return (
     <>
@@ -31,10 +45,12 @@ function App() {
         <Modal
           color={modal.color}
           key={modal.id}
+          id={modal.id}
           cursor={modal.cursor}
+          invertIndividualModal={invertIndividualModal}
         />
       ))}
-      <LoadButton invertModal={invertModal}/>
+      <LoadButton invertModals={invertModals} />
     </>
   );
 }
