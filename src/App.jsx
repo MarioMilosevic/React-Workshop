@@ -11,7 +11,7 @@ function App() {
   const [buttonColor1, setButtonColor1] = useState("bg-red-400");
   const [buttonColor2, setButtonColor2] = useState("bg-green-400");
 
-  const invertModals = () => {
+  const changeColors = () => {
     setColor1("bg-red-400");
     setColor2("bg-green-400");
     setButtonColor1("bg-green-400");
@@ -34,7 +34,7 @@ function App() {
         <Modal color={color2} />
         <Button color={buttonColor2} />
       </div>
-      <LoadButton invertModals={invertModals} />
+      <LoadButton changeColors={changeColors} />
     </>
   );
 }
