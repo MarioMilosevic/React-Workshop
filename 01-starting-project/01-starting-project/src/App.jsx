@@ -1,12 +1,12 @@
+import {CORE_CONCEPTS as data} from "./data";
 import reactImg from "./assets/react-core-concepts.png"
-import componentsImg from "./assets/components.png"
-import stateImg from "./assets/state-mgmt.png"
-const reactDescriptions = ["Fundamental", "Crucial", "Core"]
-function getRandomInt(max){
-  return Math.floor(Math.random() * (max + 1))
+const reactDescriptions = ["Fundamental", "Crucial", "Core"];
+function getRandomInt(max) {
+  return Math.floor(Math.random() * (max + 1));
 }
 function Header() {
-  const description = reactDescriptions[getRandomInt(reactDescriptions.length - 1)]
+  const description =
+    reactDescriptions[getRandomInt(reactDescriptions.length - 1)];
   return (
     <div>
       <header>
@@ -24,30 +24,38 @@ function Header() {
   );
 }
 
-const CoreConcept = ({title, description, image}) => {
-  return(
+const CoreConcept = ({ title, description, image }) => {
+  return (
     <li>
       <img src={image} alt={title} />
       <h3>{title}</h3>
       <p>{description}</p>
     </li>
-  )
-}
+  );
+};
 
 function App() {
-  return(
+  return (
     <div>
-  <Header />;
-  <main>
-    <section id="core-concepts">
-      <ul>
-    <CoreConcept title="Components" description="The core UI building block" image={componentsImg}/>
-    
-      </ul>
-    </section>
-  </main>
-  </div>
-    )
+      <Header />;
+      <main>
+        <section id="core-concepts">
+          <ul>
+            {data.map((el, index) => {
+              return (
+                <CoreConcept
+                  key={index}
+                  title={el.title}
+                  description={el.description}
+                  image={el.image}
+                />
+              );
+            })}
+          </ul>
+        </section>
+      </main>
+    </div>
+  );
 }
 
 export default App;
