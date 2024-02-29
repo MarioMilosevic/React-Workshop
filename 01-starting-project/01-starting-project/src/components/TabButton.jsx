@@ -1,11 +1,10 @@
-import React from 'react'
-
-const TabButton = ({children}) => {
+const TabButton = ({ children, onSelect }) => {
+ 
   return (
     <li>
-      <button>{children}</button>
+      <button onClick={onSelect}>{children}</button>
     </li>
-  )
-}
+  );
+};
 
-export default TabButton
+export default TabButton;
