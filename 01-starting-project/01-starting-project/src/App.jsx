@@ -3,8 +3,10 @@ import Header from "./components/Header/Header";
 import CoreConcept from "./components/CoreConcept";
 import TabButton from "./components/TabButton";
 import { useState } from "react";
+import { EXAMPLES } from "./data";
+
 function App() {
-  const [tabContent, setTabContent] = useState("Please click a button");
+  const [tabContent, setTabContent] = useState();
   function handleSelect(selectedButton) {
     setTabContent(selectedButton);
   }
@@ -31,6 +33,16 @@ function App() {
           </menu>
           {tabContent}
         </section>
+        {!tabContent && <p>Please select a topic</p>}
+        {tabContent && (
+          <div id="tab-content">
+            <h3>{EXAMPLES[tabContent].title}</h3>
+            <p>{EXAMPLES[tabContent].description}</p>
+            <pre>
+              <code>{EXAMPLES[tabContent].code}</code>
+            </pre>
+          </div>
+        )}
       </main>
     </div>
   );
