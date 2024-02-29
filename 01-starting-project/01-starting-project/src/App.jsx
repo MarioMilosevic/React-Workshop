@@ -1,6 +1,7 @@
-function App() {
-  return (
-    <div>
+
+function Header(){
+  return(
+<div>
       <header>
         <img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
         <h1>React Essentials</h1>
@@ -13,6 +14,12 @@ function App() {
         <h2>Time to get started!</h2>
       </main>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <Header/>
   );
 }
 
