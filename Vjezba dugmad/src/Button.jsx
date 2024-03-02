@@ -1,16 +1,16 @@
-const Button = ({ size, clickHandler, color }) => {
-  let buttonSize;
-  if (size === "sm") {
-    buttonSize = "w-[6rem] h-[6-rem]";
-  } else if (size === "md") {
-    buttonSize = "w-[8rem] h-[8rem]";
-  } else if (size === "lg") {
-    buttonSize = "w-[10rem] h-[10rem]";
+const Button = ({ clickHandler, type, color }) => {
+  let button;
+  if (type === "primary") {
+    button = `w-24 h-12 bg-${color}-400 rounded-md text-xl hover:bg-${color}-500`;
+  } else if (type === "secondary") {
+    button = `w-40 h-20 bg-${color}-400 rounded-md text-2xl hover:bg-${color}-500`;
+  } else if (type === "ghost") {
+    button = `w-48 h-24 border border-${color}-400 text-${color}-400 text-3xl duration-200 hover:bg-${color}-400 hover:text-white`;
   }
 
   return (
-    <button className={`${buttonSize} `} onClick={clickHandler}>
-      Dugme
+    <button className={`${button} rounded-md`} onClick={clickHandler}>
+      Save
     </button>
   );
 };
