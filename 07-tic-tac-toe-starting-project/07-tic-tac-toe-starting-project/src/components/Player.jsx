@@ -1,17 +1,26 @@
 import { useState } from "react";
-const Player = ({ name, symbol }) => {
+const Player = ({ initialName, symbol }) => {
+
   const [isEditing, setIsEditing] = useState(false);
+  const [playerName, setPlayerName] = useState(initialName);
 
   const handleEditClick = () => {
-    setIsEditing((prev) => {
-      return (prev = !prev);
+    setIsEditing((editing) => !editing);
+    // setPlayerName('')
+  };
+
+  const handleInputChange = (e) => {
+    setPlayerName((prev) => {
+      return (prev = e.target.value);
     });
   };
   return (
     <li>
       <span className="player">
-        {!isEditing && <span className="player-name">{name}</span>}
-        {isEditing && <input value={name} />}
+        {!isEditing && <span className="player-name">{playerName}</span>}
+        {isEditing && (
+          <input value={playerName} onChange={handleInputChange} />
+        )}
 
         <span className="player-symbol">{symbol}</span>
       </span>
