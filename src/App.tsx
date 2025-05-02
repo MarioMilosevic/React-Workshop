@@ -1,17 +1,17 @@
 import React from "react";
-import Grandparent from "./components/Grandparent";
-import { useState, useContext } from "react";
-import counterCtx from "./context/counterCtx";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+import Users from "./components/Users";
+
+const queryClient = new QueryClient();
 
 const App = () => {
-  const [counter, setCounter] = useState<number>(0);
-
-  console.log("rerender APP");
-
   return (
-    <counterCtx.Provider value={{ counter, setCounter }}>
-      <Grandparent />
-    </counterCtx.Provider>
+    <QueryClientProvider client={queryClient}>
+      <Users/>
+    </QueryClientProvider>
   );
 };
 
