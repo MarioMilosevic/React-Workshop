@@ -3,6 +3,7 @@ import MemoChild from "./components/MemoChild";
 const App = () => {
   const [numbers, setNumbers] = useState<number[]>([1, 12, 34, 79, 0, 6, 7]);
   const [counter, setCounter] = useState<number>(0);
+  const [message, setMessage] = useState<string>("Mario");
 
   console.log("app render");
 
@@ -20,7 +21,8 @@ const App = () => {
       <button onClick={() => setNumbers((prev) => [...prev, 150])}>
         ARRAY
       </button>
-      <MemoChild numbers={numbers} />
+      <button onClick={() => setMessage("Toni")}>Promjeni message</button>
+      <MemoChild numbers={numbers} message={message} />
     </div>
   );
 };
