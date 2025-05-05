@@ -1,26 +1,26 @@
 import React, { useState, useRef } from "react";
-
+import MemoChild from "./components/MemoChild";
 const App = () => {
-  const [input, setInput] = useState<string>("");
-  const timeoutRef = useRef(null);
+  const [numbers, setNumbers] = useState<number[]>([1, 12, 34, 79, 0, 6, 7]);
+  const [counter, setCounter] = useState<number>(0);
 
-  const inputHandler = (e) => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-    timeoutRef.current = setTimeout(() => {
-      console.log("radi", e.target.value);
-    }, 1000);
-  };
+  console.log("app render");
 
   return (
-    <div className="flex flex-col gap-4">
-      <input
-        type="text"
-        placeholder="Input field "
-        className="p-2 rounded-lg text-slate-950"
-        onChange={inputHandler}
-      />
+    <div className="flex gap-12">
+      <div className="flex gap-4">
+        <button onClick={() => setCounter((prev) => (prev -= 1))}>
+          Decrement
+        </button>
+        <p>{counter}</p>
+        <button onClick={() => setCounter((prev) => (prev += 1))}>
+          Increment
+        </button>
+      </div>
+      <button onClick={() => setNumbers((prev) => [...prev, 150])}>
+        ARRAY
+      </button>
+      <MemoChild numbers={numbers} />
     </div>
   );
 };
