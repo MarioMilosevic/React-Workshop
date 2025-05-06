@@ -1,18 +1,15 @@
 import React from "react";
 import { dummyType } from "../utils/constants";
 
-type DummyPersonPropsType = {
+type PersonProps = {
   person: dummyType;
-  deleteHandler: (id: number) => void;
   toggleEdit: () => void;
+  deleteHandler: (id: number) => void;
 };
 
-const DummyPerson = ({
-  person,
-  deleteHandler,
-  toggleEdit,
-}: DummyPersonPropsType) => {
+const Person = ({ person, toggleEdit, deleteHandler }: PersonProps) => {
   const { name, lastName, age, id, active } = person;
+
   return (
     <div className="border p-2 flex flex-col gap-2 min-w-[180px]">
       <p>Name: {name}</p>
@@ -37,4 +34,4 @@ const DummyPerson = ({
   );
 };
 
-export default DummyPerson;
+export default Person;
