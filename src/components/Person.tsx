@@ -18,13 +18,13 @@ const Person = ({ person, toggleEdit, deleteHandler }: PersonProps) => {
       <p>Active: {active ? "Yes" : "No"}</p>
       <div className="flex justify-between items-center mt-4">
         <button
-          className="rounded-xl px-2 py-1 border bg-green-600"
+          className="rounded-xl px-2 py-1  bg-green-600"
           onClick={toggleEdit}
         >
           Edit
         </button>
         <button
-          className="rounded-xl px-2 py-1 border bg-red-700"
+          className="rounded-xl px-2 py-1  bg-red-700"
           onClick={() => deleteHandler(id)}
         >
           Delete

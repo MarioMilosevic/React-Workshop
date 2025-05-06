@@ -6,23 +6,28 @@ import EditDummyPerson from "./EditDummyPerson";
 type DummyPersonPropsType = {
   person: dummyType;
   deleteHandler: (id: number) => void;
+  editHandler: (editedPerson: dummyType) => void;
 };
 
-const PreviewPerson = ({ person, deleteHandler }: DummyPersonPropsType) => {
-  const [isEditing, setIsEditing] = useState<boolean>(true);
+const PreviewPerson = ({
+  person,
+  deleteHandler,
+  editHandler,
+}: DummyPersonPropsType) => {
+  const [isEditing, setIsEditing] = useState<boolean>(false);
 
   const toggleEdit = () => {
     setIsEditing((prev) => !prev);
   };
 
-  const editHandler = (id: number) => {
-    console.log("id", id);
-  };
-
   return (
     <>
       {isEditing ? (
-        <EditDummyPerson person={person} editHandler={editHandler} />
+        <EditDummyPerson
+          person={person}
+          editHandler={editHandler}
+          closeEdit={() => setIsEditing(false)}
+        />
       ) : (
         <Person
           person={person}

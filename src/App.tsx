@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { dummyData, dummyType } from "./utils/constants";
 import PreviewPerson from "./components/PreviewPerson";
-import EditDummyPerson from "./components/EditDummyPerson";
+
 const App = () => {
   const [persons, setPersons] = useState<dummyType[]>(dummyData);
 
@@ -11,6 +11,14 @@ const App = () => {
     });
   };
 
+  const editHandler = (editedPerson: dummyType) => {
+    console.log(editedPerson);
+    setPersons((prev) => {
+      return prev.map((person) =>
+        person.id === editedPerson.id ? { ...editedPerson } : person
+      );
+    });
+  };
 
   return (
     <div className="flex gap-4">
@@ -19,6 +27,7 @@ const App = () => {
           key={person.id}
           person={person}
           deleteHandler={deleteHandler}
+          editHandler={editHandler}
         />
       ))}
     </div>
