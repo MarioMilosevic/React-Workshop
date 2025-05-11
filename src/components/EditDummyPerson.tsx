@@ -14,7 +14,8 @@ const EditDummyPerson = ({
 }: EditDymmyPersonProps) => {
   const [editPerson, setEditPerson] = useState<dummyType>({ ...person });
 
-  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+      console.log('edit dummy')
     e.preventDefault();
     editHandler(editPerson);
     closeEdit();
