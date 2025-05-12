@@ -25,7 +25,16 @@ const App = () => {
   return (
     <div className="flex gap-4">
       <MarioParent>
-        <MarioChild/>
+        <MarioChild />
+        <div>mario</div>
+      </MarioParent>
+      <MarioParent>
+        <h1>naslov</h1>
+        <p>text</p>
+      </MarioParent>
+      <MarioParent>
+        <p>text</p>
+        <h1>naslov</h1>
       </MarioParent>
       {/* {persons.map((person) => (
         <PreviewPerson
