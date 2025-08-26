@@ -1,6 +1,18 @@
-import { useState } from "react";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
+import Example from "./components/Example";
+
+const queryClient = new QueryClient();
+
 const App = () => {
-  return <div className="flex gap-4">mario</div>;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Example />
+    </QueryClientProvider>
+  );
 };
 
 export default App;
