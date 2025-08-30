@@ -11,6 +11,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <Example />
+      <h1>Mario je frontend developer</h1>
     </QueryClientProvider>
   );
 };
