@@ -9,7 +9,8 @@ describe("Greeting component", () => {
     expect(screen.getByText("Hello, World!")).toBeInTheDocument();
   });
 
-  // it('renders a greeting with a name', () => {
-
-  // })
+  it("renders greeting with a name", () => {
+    render(<Greeting name="Mario" />);
+    expect(screen.getByText("Hello, Mario!")).toBeInTheDocument();
+  });
 });
