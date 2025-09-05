@@ -1,25 +1,14 @@
-// import {
-//   QueryClient,
-//   QueryClientProvider,
-//   useQuery,
-// } from "@tanstack/react-query";
-// import Example from "./components/Example";
-
-// const queryClient = new QueryClient();
-import { useState } from "react";
+import Counter from "./components/Counter";
+import Greeting from "./components/Greeting";
+import UserProfile from "./components/UserProfile";
 
 const App = () => {
-  const [counter, setCounter] = useState(0);
-
   return (
-    <div>
-      <button>Increment +</button>
-      <p>Counter {counter}</p>
-      <button>Decrement -</button>
+    <div className="flex flex-col gap-4">
+      <Greeting name="Mario" />
+      <Counter />
+      <UserProfile userId={1} />
     </div>
-    // <QueryClientProvider client={queryClient}>
-    //   <Example />
-    // </QueryClientProvider>
   );
 };
 
