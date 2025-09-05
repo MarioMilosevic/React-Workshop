@@ -1,7 +1,8 @@
-import { useCounter } from "../../useCounter";
+import { useCounter } from "../../hooks/useCounter";
 
 function Counter() {
   const { count, increment } = useCounter();
+
   return (
     <div>
       <p data-testid="counter-value">{count}</p>
