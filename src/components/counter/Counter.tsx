@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useCounter } from "../useCounter";
+import { useCounter } from "../../useCounter";
+
 function Counter() {
   const { count, increment } = useCounter();
   return (

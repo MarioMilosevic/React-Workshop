@@ -1,6 +1,6 @@
-import Counter from "./components/Counter";
-import Greeting from "./components/Greeting";
-import UserProfile from "./components/UserProfile";
+import Counter from "./components/counter/Counter";
+import Greeting from "./components/greeting/Greeting";
+import UserProfile from "./components/userProfile/UserProfile";
 
 const App = () => {
   return (
