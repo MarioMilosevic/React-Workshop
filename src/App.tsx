@@ -1,15 +1,12 @@
-import Counter from "./components/counter/Counter";
-import Greeting from "./components/greeting/Greeting";
-import UserProfile from "./components/userProfile/UserProfile";
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 
-const App = () => {
-  return (
-    <div className="flex flex-col gap-4">
-      <Greeting name="Mario" />
-      <Counter />
-      <UserProfile userId={1} />
-    </div>
-  );
-};
-
-export default App;
+export default function App() {
+  const queryClient = new QueryClient();
+  return <QueryClientProvider client={queryClient}></QueryClientProvider>;
+}
