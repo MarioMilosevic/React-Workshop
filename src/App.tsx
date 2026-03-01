@@ -1,18 +1,20 @@
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
-import Todos from "./tanstackComponents/Todos";
+import LogActionModalFooter from "./components/LogActionModalFooter";
 
 export default function App() {
-  const queryClient = new QueryClient();
+  const handleBack = () => {
+    console.log("go back");
+  };
+  const handleForward = () => {
+    console.log("go forward");
+  };
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Todos />
-    </QueryClientProvider>
+    <LogActionModalFooter
+      backButtonText="Back"
+      forwardButtonText="Next"
+      handleGoBack={handleBack}
+      handleGoForward={handleForward}
+      isForwardDisabled
+    />
   );
 }
