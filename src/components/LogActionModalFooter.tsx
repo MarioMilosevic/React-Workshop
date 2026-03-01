@@ -7,7 +7,7 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-interface Props extends React.HTMLAttributes<HTMLElement> {
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
   backButtonText: string;
   forwardButtonText: string;
   handleGoForward: () => void;
