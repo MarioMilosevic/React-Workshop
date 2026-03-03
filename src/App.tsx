@@ -1,23 +1,10 @@
-import PostCard from "./components/PostCard";
+import Modal from "./components/Modal";
 export default function App() {
   return (
-    <PostCard
-      post={{
-        id: 1,
-        title: "Hello World",
-        content: "This is a sample post content.",
-        user: {
-          id: 2,
-          name: "Mario Milosevic",
-        },
-      }}
-    >
-      <PostCard.wrapper>
-        <PostCard.title />
-        <PostCard.content />
-        <PostCard.user />
-        <PostCard.actions />
-      </PostCard.wrapper>
-    </PostCard>
+    <div>
+      <Modal isOpen={true} onClose={() => console.log("nesto")}>
+        Ovo je neki children
+      </Modal>
+    </div>
   );
 }
